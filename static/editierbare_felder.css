@@ -7,6 +7,7 @@
 input{
     height: 34px;
     width: 34px;
+
 }
 .normalesdiv{
     height: 40px;
@@ -26,4 +27,22 @@ input{
 }
 .untererrand{
     border-bottom: 2px solid black;
+}
+
+.sudoku_input{
+    text-align: center;
+    font-size: 30px;
+    outline: none;
+}
+
+.game {
+    margin: auto;
+    width: max-content;
+}
+
+input:disabled{
+    background: none;
+    outline: white;
+
+
 }
