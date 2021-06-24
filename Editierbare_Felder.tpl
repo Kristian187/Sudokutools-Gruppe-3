@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sudoku</title>
     <link rel="stylesheet" href="static/editierbare_felder.css">
 </head>
     <div class="game">
-        <form action="/" , method="GET">
+        <form action="/solve" , method="POST" name="grid" id="grid">
             <div class="rand">
                 % counter = 0
                 % for x in range (1,10):
@@ -25,6 +25,7 @@
             </div>
 
         </form>
-        <a href="/solve"><button name="reset_button" type="button">Solve</button></a>
+<a href="/solve"><button name="reset_button" type="submit" form="grid">Solve</button></a>
+<a href="/solution"><button name="reset_button" type="button">Show solution</button></a>
     </div>
 </html>
