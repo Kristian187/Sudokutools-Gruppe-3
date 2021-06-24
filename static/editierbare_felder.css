@@ -5,25 +5,29 @@
     margin-left: 314px;
 }
 input{
-    height: 34px;
-    width: 34px;
-
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    outline: none;
+    border: none;
 }
 .normalesdiv{
-    height: 40px;
-    width: 40px;
+    height: 38px;
+    width: 38px;
     float: left;
-    margin: 0px;
+    margin: auto;
     padding: 0px;
+    border: black solid 1px;
+
 }
 .rand{
-    height: 364px;
-    width: 370px;
+    height: 100%;
+    width: 362px;
     display: inline-block;
     border: 4px solid black;
 }
 .rechterrand{
-    border-right: 4px solid black;
+    border-right: 2px solid black;
 }
 .untererrand{
     border-bottom: 2px solid black;
@@ -32,17 +36,9 @@ input{
 .sudoku_input{
     text-align: center;
     font-size: 30px;
-    outline: none;
 }
 
 .game {
     margin: auto;
     width: max-content;
-}
-
-input:disabled{
-    background: none;
-    outline: white;
-
-
 }

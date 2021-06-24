@@ -8,13 +8,7 @@ def init_empty_grid() -> List[List[int]]:
     Creates a 2-Dimensional list filled with 0s.
     :return: The empty grid
     """
-    grid = []
-    for row_index in range(9):
-        inner_grid = []
-        for column_index in range(9):
-            inner_grid.append(0)
-        grid.append(inner_grid)
-    return grid
+    return [[0] * 9 for x in range(9)]
 
 
 def print_grid(grid: List[List[int]]):
@@ -45,13 +39,7 @@ def init_candidates() -> List[List[str]]:
     Creates a 2-Dimensional list filled with strings that contain "123456789"s.
     :return: Candidates as a string in a 2-Dimensional list
     """
-    candidates = []
-    for row_index in range(9):
-        inner_candidates = []
-        for column_index in range(9):
-            inner_candidates.append("123456789")
-        candidates.append(inner_candidates)
-    return candidates
+    return [["123456789"] * 9 for x in range(9)]
 
 
 def input_sudoku(grid: List[List[int]]):
@@ -295,35 +283,18 @@ def find_lonely_candidates(candidates: List[List[str]]):
             find_lonely_candidate_in_block(candidates, row_index, column_index)
 
 
-def main():
+def main(grid):
     """
     By Nico & Emil
     Combines all functions needed to solve the Sudoku. Prints every round the grid.
     :return: /
     """
-    grid = init_empty_grid()
-    while True:
-        which_grid = input("Do you want the default grid (default) or do you want to initialize a new one (new)?: ")
-        if which_grid.lower() == "default":
-            set_default_sudoku_grid(grid)
-            break
-        elif which_grid.lower() == "new":
-            input_sudoku(grid)
-            break
-        else:
-            print("The input was invalid")
     candidates = init_candidates()
-    print("Start:\n")
-    print_grid(grid)
-    rounds = 0
     while True:
-        rounds += 1
         remove_impossible_candidates(grid, candidates)
         find_lonely_candidates(candidates)
         if not set_value_in_cell_by_last_candidate(grid, candidates):
-            break
-        print(f"Round: {rounds}\n")
-        print_grid(grid)
+            return grid
 
 
 if __name__ == "__main__":
