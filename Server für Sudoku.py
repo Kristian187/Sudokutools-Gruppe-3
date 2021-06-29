@@ -3,18 +3,9 @@ from LK3 import *
 import copy
 
 @route("/")
-def sudoku():
+def sudoku_grid():
     return template("Editierbare_Felder.tpl",
-                      grid=[[0, 0, 1, 2, 0, 7, 0, 0, 0],
-                          [0, 6, 2, 0, 0, 0, 0, 0, 0],
-                          [0, 0, 0, 0, 0, 0, 9, 4, 0],
-                          [0, 0, 0, 9, 8, 0, 0, 0, 3],
-                          [5, 0, 0, 0, 0, 0, 0, 0, 0],
-                          [7, 0, 0, 0, 3, 0, 0, 2, 1],
-                          [0, 0, 0, 1, 0, 2, 0, 0, 0],
-                          [0, 7, 0, 8, 0, 0, 4, 1, 0],
-                          [3, 0, 4, 0, 0, 0, 0, 8, 0]]
-                    )
+                      grid=[[0]*9 for x in range(9)])
 
 
 @route("/solve", method="POST")
@@ -28,23 +19,21 @@ def solve_sudoku():
             if not grid_solveable[x][y] == 0:
                 checker = False
     return template("Editierbare_Felder.tpl",
-                    checker = checker)
+                    checker = checker,
+                    grid=grid_solveable)
 
-@route("/solution", method="GET")
-def solve_sudoku():
-    grid = [[0, 0, 1, 2, 0, 7, 0, 0, 0],
-            [0, 6, 2, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 9, 4, 0],
-            [0, 0, 0, 9, 8, 0, 0, 0, 3],
-            [5, 0, 0, 0, 0, 0, 0, 0, 0],
-            [7, 0, 0, 0, 3, 0, 0, 2, 1],
-            [0, 0, 0, 1, 0, 2, 0, 0, 0],
-            [0, 7, 0, 8, 0, 0, 4, 1, 0],
-            [3, 0, 4, 0, 0, 0, 0, 8, 0]]
-
-    grid_solved = main(grid)
+@route("/create_example", method="GET")
+def create_example():
     return template("Editierbare_Felder.tpl",
-                    grid =grid_solved)
+                    grid=[[0, 0, 1, 2, 0, 7, 0, 0, 0],
+                        [0, 6, 2, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 9, 4, 0],
+                        [0, 0, 0, 9, 8, 0, 0, 0, 3],
+                        [5, 0, 0, 0, 0, 0, 0, 0, 0],
+                        [7, 0, 0, 0, 3, 0, 0, 2, 1],
+                        [0, 0, 0, 1, 0, 2, 0, 0, 0],
+                        [0, 7, 0, 8, 0, 0, 4, 1, 0],
+                        [3, 0, 4, 0, 0, 0, 0, 8, 0]])
 
 @route('/static/<filename>')
 def server_static(filename):
@@ -59,12 +48,14 @@ def get_grid_from_forms(forms):
     :param forms: form content sent with the request
     :return: TicTacToe Grid as List of Lists
     """
-    grid = [[0] * 9 for x in range(9)]
+    grid = [[] for x in range(9)]
 
     for x in range(9):
         for y in range(9):
-            grid[x].append(forms.get(str(x+y)))
-
+            if forms.get(str((x*9)+y)):
+                grid[x].append(int(forms.get(str((x*9)+y))))
+            else:
+                grid[x].append(0)
     return grid
 
 
