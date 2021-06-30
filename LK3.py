@@ -86,10 +86,11 @@ def is_present_in_row(grid: List[List[int]], row_index: int, digit: int):
     :param digit: The given digit
     :return: True, if the given digit is already in the row, otherwise False
     """
+    how_many_times = 0
     for column_index in range(9):
         if digit == grid[row_index][column_index]:
-            return True
-    return False
+            how_many_times += 1
+    return how_many_times
 
 
 def is_present_in_column(grid: List[List[int]], column_index: int, digit: int):
@@ -101,10 +102,11 @@ def is_present_in_column(grid: List[List[int]], column_index: int, digit: int):
     :param digit: The given digit
     :return: True, if the given digit is already in the column, otherwise False
     """
+    how_many_times = 0
     for row_index in range(9):
         if digit == grid[row_index][column_index]:
-            return True
-    return False
+            how_many_times += 1
+    return how_many_times
 
 
 def is_present_in_block(grid: List[List[int]], row_index: int, column_index: int, digit: int) -> bool:
@@ -117,6 +119,7 @@ def is_present_in_block(grid: List[List[int]], row_index: int, column_index: int
     :param digit: The given digit
     :return: True, if the given digit is already in the column, otherwise False
     """
+    how_many_times = 0
     row_index //= 3
     column_index //= 3
     row_index *= 3
@@ -125,10 +128,10 @@ def is_present_in_block(grid: List[List[int]], row_index: int, column_index: int
         for row in range(row_index, row_index+3):
             cell = grid[row][column]
             if cell == digit:
-                return True
+                how_many_times += 1
             else:
                 pass
-    return False
+    return how_many_times
 
 
 def is_possible_in_cell(grid: List[List[int]], row_index: int, column_index: int, digit: int) -> bool:
