@@ -26,7 +26,7 @@
                     % end
                 % end
             </div>
-
+a
         </form>
 <a href="/solve"><button name="reset_button" type="submit" form="grid">Solve</button></a>
 <a href="/create_example"><button name="reset_button" type="button">Create Example</button></a>
