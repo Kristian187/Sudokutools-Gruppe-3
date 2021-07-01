@@ -285,7 +285,6 @@ def find_lonely_candidates(candidates: List[List[str]]):
             find_lonely_candidate_in_column(candidates, row_index, column_index)
             find_lonely_candidate_in_block(candidates, row_index, column_index)
 
-
 def main(grid):
     """
     By Nico & Emil

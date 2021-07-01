@@ -46,7 +46,10 @@ h1{
     margin: auto;
     width: max-content;
 }
-
+p{
+    margin: auto;
+    color: red;
+}
 
 
 
