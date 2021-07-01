@@ -30,6 +30,7 @@ def solve_sudoku():
                         checker = checker,
                         grid=grid_solveable)
 
+
 @route("/create_example", method="GET")
 def create_example():
     return template("Editierbare_Felder.tpl",

@@ -5,6 +5,7 @@
     <title>Sudoku</title>
     <link rel="stylesheet" href="static/editierbare_felder.css">
 </head>
+
 <h1>Sudoku</h1>
     <div class="game">
         <form action="/solve" , method="POST" name="grid" id="grid">
@@ -29,6 +30,7 @@
 a
         </form>
 <a href="/solve"><button name="reset_button" type="submit" form="grid">Solve</button></a>
+<a href="/check"><button name="check" type="button">Check</button></a>
 <a href="/create_example"><button name="reset_button" type="button">Create Example</button></a>
 <a href="/"><button name="reset_button" type="button">Clear</button></a>
     % try:
