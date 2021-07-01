@@ -1,8 +1,7 @@
 .button{
     height: 34px;
-    width: 60px;
-    margin-top: 4px;
-    margin-left: 314px;
+    width: max-content;
+    margin: auto;
 }
 input{
     height: 100%;
@@ -45,6 +44,19 @@ input{
 h1{
     margin: auto;
     width: max-content;
+    font-family: "Comic Sans MS";
+}
+.knoepfe{
+    margin: auto;
+    width: max-content;
+    font-family: sans-serif;
+}
+.headline{
+    margin: auto;
+    width: 100%;
+    border-bottom: 3px black solid;
+    margin-bottom: 20px;
+    background-color: lightgray;
 }
 p{
     margin: auto;
