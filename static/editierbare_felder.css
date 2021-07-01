@@ -58,5 +58,10 @@ h1{
     margin-bottom: 20px;
     background-color: lightgray;
 }
-
-
+.readonly{
+    font-family: sans-serif;
+    color: grey;
+}
+table{
+    margin: auto -3px;
+}
