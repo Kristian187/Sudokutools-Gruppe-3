@@ -32,11 +32,11 @@
             </div>
         </form>
     <div class="knoepfe">
-        <a href="/solve"><button name="reset_button" type="submit" form="sudoku">Solve</button></a>
-        <a href="/create_example"><button name="reset_button" type="submit">Create Example</button></a>
-        <a href="/check"><button name="reset_button" type="submit">Check</button></a>
-        <a href="/"><button name="reset_button" type="submit">Clear</button></a>
-        <a href="/einmalige_ausfuellung"><button name="name_button" type="submit">Solve a Field</button></a>
+        <button name="subject" type="submit" form="sudoku" value="solve">Solve</button>
+        <button name="subject" type="submit" form="sudoku" value="create_example">Create Example</button>
+        <button name="subject" type="submit" form="sudoku" value="check">Check</button>
+        <button name="subject" type="submit" form="sudoku" value="check">Clear</button>
+        <button name="subject" type="submit" form="sudoku" value="einmalige_ausfuellung">Solve a Field</button>
     % try:
         % if value_error:
             <p>Only numbers are allowed!</p>

@@ -10,7 +10,21 @@ def sudoku_grid():
                     grid=[[0]*9 for x in range(9)])
 
 
-@route('/einmalige_ausfuellung', method="GET")
+@route("/solve", method="POST")
+def button_clicked():
+    subject = request.forms.get("subject")
+    if subject == "solve":
+        return solve_sudoku()
+    if subject == "check":
+        return check_sudoku()
+    elif subject == "einmalige_ausfuellung":
+        return einmalige_ausfuellung()
+    elif subject == "create_example":
+        return create_example()
+    else:
+        return "Nope!"
+
+
 def einmalige_ausfuellung():
     is_empty = False
     default_grid, value_error = get_grid_from_forms(request.forms)
@@ -37,7 +51,7 @@ def einmalige_ausfuellung():
                         grid=default_grid,
                         is_empty=False)
 
-@route("/solve", method="POST")
+
 def solve_sudoku():
     gotten_grid, value_error = get_grid_from_forms(request.forms)
     grid_solveable = copy.deepcopy(gotten_grid)
@@ -57,14 +71,13 @@ def solve_sudoku():
                         checker = checker,
                         grid=grid_solveable)
 
-@route("/create_example")
+
 def create_example():
     return template("Editierbare_Felder.tpl",
                     grid=copy.deepcopy(create_random_sudoku()))
 
 
-@route("/check", method="GET")
-def solve_sudoku():
+def check_sudoku():
     grid, value_error = get_grid_from_forms(request.forms)
     solve_sudoku = copy.deepcopy(main(copy.deepcopy(grid)))
     pulse_list = [[] for x in range(9)]
@@ -83,8 +96,6 @@ def solve_sudoku():
         return template("Editierbare_Felder.tpl",
                         grid=grid,
                         pulse_list=pulse_list)
-
-
 
 
 @route('/static/<filename>')
