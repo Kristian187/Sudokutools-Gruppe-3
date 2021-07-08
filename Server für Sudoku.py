@@ -18,7 +18,6 @@ def einmalige_ausfuellung():
     solution = main(solution)
     for x in range(9):
         for y in range(9):
-            print(default_grid)
             if default_grid[x][y] == 0:
                 is_empty = True
                 break
@@ -83,7 +82,7 @@ def solve_sudoku():
     else:
         return template("Editierbare_Felder.tpl",
                         grid=grid,
-                        pulse_list=pulse_list,)
+                        pulse_list=pulse_list)
 
 
 
@@ -108,6 +107,7 @@ def create_random_sudoku():
                 how_many_numbers += 1
         solveable = main(copy.deepcopy(random_grid))
         filled = True
+        print(solveable)
         for row in range(9):
             for column in range(9):
                 if not solveable[row][column] != 0:
